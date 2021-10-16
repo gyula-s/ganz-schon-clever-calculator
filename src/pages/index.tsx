@@ -6,6 +6,25 @@ const IndexPage = () => {
     const [players, setPlayers] = useState({});
     const [name, setName] = useState("");
     const [ongoingGame, setOngoingGame] = useState(false);
+
+    //function to get data stored in localstorage  
+    const getData = () => {
+        const data : string = localStorage.getItem('players');
+        //check if there is data in local storage if not return empty object
+        return data ? JSON.parse(data) : {}
+    }
+
+    //updete players state on the first render
+    useEffect(() => {
+        setPlayers(getData())
+    }, [])
+
+    //update the localstorage when the players state change
+    useEffect(() => {
+        localStorage.setItem('players', JSON.stringify(players))
+    },[players])
+    
+   
     const onChangeHandler = (e: {
         target: { value: React.SetStateAction<string> };
     }) => {
