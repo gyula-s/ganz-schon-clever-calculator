@@ -51,7 +51,6 @@ const IndexPage = () => {
         const playerName =
             e.target.playerName.value ||
             `Player ${Object.keys(players).length + 1}`;
-            localStorage.setItem('playerNames', JSON.stringify({...players[playerName], playerName}))
         setPlayers({ ...players, [playerName]: { score: emptyScore } });
         setName("");
     };
