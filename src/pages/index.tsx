@@ -9,19 +9,24 @@ const IndexPage = () => {
 
     //function to get data stored in localstorage  
     const getData = () => {
-        const data : string = localStorage.getItem('players');
+        const localData: string = localStorage.getItem('playerNames');
         //check if there is data in local storage if not return empty object
-        return data ? JSON.parse(data) : {}
+        return localData ? JSON.parse(localData) : {}
     }
 
     //updete players state on the first render
     useEffect(() => {
         setPlayers(getData())
-    }, [])
+    },[])
 
     //update the localstorage when the players state change
     useEffect(() => {
-        localStorage.setItem('players', JSON.stringify(players))
+        const names: Array<string> = Object.keys(players);
+        let playerNames = {};
+        names.map(name => {
+            playerNames = {...playerNames, [name]: { score: emptyScore } }
+        })
+        localStorage.setItem('playerNames', JSON.stringify(playerNames))
     },[players])
     
    
@@ -46,6 +51,7 @@ const IndexPage = () => {
         const playerName =
             e.target.playerName.value ||
             `Player ${Object.keys(players).length + 1}`;
+            localStorage.setItem('playerNames', JSON.stringify({...players[playerName], playerName}))
         setPlayers({ ...players, [playerName]: { score: emptyScore } });
         setName("");
     };
