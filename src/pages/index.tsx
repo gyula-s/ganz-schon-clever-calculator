@@ -1,47 +1,48 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import View from "../components/View";
 import Player from "../components/Player";
+
+const emptyScore = {
+    yellow: 0,
+    blue: 0,
+    green: 0,
+    orange: 0,
+    purple: 0,
+    fox: 0,
+    total: 0,
+};
+
 // markup
 const IndexPage = () => {
     const [players, setPlayers] = useState({});
     const [name, setName] = useState("");
-    const [ongoingGame, setOngoingGame] = useState(false);
-    const onChangeHandler = (e: {
-        target: { value: React.SetStateAction<string> };
-    }) => {
-        setName(e.target.value);
+
+    const onChangeHandler = ({
+        target,
+    }: React.ChangeEvent<HTMLInputElement>) => {
+        setName(target.value);
     };
 
-    const emptyScore = {
-        yellow: 0,
-        blue: 0,
-        green: 0,
-        orange: 0,
-        purple: 0,
-        fox: 0,
-        total: 0,
-    };
+    const generatePlayerName = () =>
+        name.length > 0 ? name : `Player ${Object.keys(players).length + 1}`;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const playerName =
-            e.target.playerName.value ||
-            `Player ${Object.keys(players).length + 1}`;
-        setPlayers({ ...players, [playerName]: { score: emptyScore } });
+        const playerName = generatePlayerName();
+
+        setPlayers((prevState) => ({
+            ...prevState,
+            [playerName]: { score: emptyScore },
+        }));
         setName("");
     };
 
     const setPlayerScore = (name: string, score: string) => {
-        setPlayers({ ...players, [name]: { score } });
+        setPlayers((prevState) => ({
+            ...prevState,
+            [name]: { score },
+        }));
     };
-
-    useEffect(() => {
-        const isThereAnOngoingGame = Object.keys(players).reduce((acc, cur) => {
-            return acc || !!players[cur].score.total;
-        }, false);
-
-        setOngoingGame(isThereAnOngoingGame);
-    });
 
     const resetGame = () => {
         const playerNames = Object.keys(players);
@@ -49,8 +50,19 @@ const IndexPage = () => {
             return { ...acc, [cur]: { score: emptyScore } };
         }, {});
         setPlayers(newPlayers);
-        setOngoingGame(false);
     };
+
+    let isGameInProgress = false;
+
+    const playersEntries = Object.entries(players);
+
+    const anyPlayerHasAScore = playersEntries.some(
+        ([_, val]: any[]) => val.score.total > 0
+    );
+
+    if (playersEntries.length > 0 && anyPlayerHasAScore) {
+        isGameInProgress = true;
+    }
 
     return (
         <>
@@ -82,8 +94,8 @@ const IndexPage = () => {
                 </form>
 
                 <br />
-                <button onClick={() => setPlayers([])}>Remove Players</button>
-                {ongoingGame && (
+                <button onClick={() => setPlayers({})}>Remove Players</button>
+                {isGameInProgress && (
                     <button onClick={() => resetGame()}>Reset Game</button>
                 )}
             </View>
