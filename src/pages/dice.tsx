@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import cx from "classnames";
 import { ADie, Die } from "../components/Die/Die";
-import View from "../components/View";
+import Layout from "../components/Layout";
 import * as styles from "./dice.module.scss";
 
 const getRandomNumbers = (colours: string[]): ADie[] =>
@@ -77,10 +77,11 @@ const DicePage = () => {
 
     useEffect(() => {
         setDicePool(getRandomNumbers(availableColours));
-    }, [availableColours]);
+        setSilverPlate(silverPlate);
+    }, [availableColours, silverPlate]);
 
     return (
-        <View>
+        <Layout>
             <div className={cx([styles.dice])}>
                 {dicePool.map(({ colour, number }, key) => {
                     return (
@@ -172,7 +173,7 @@ const DicePage = () => {
                     })}
                 </div>
             </div>
-        </View>
+        </Layout>
     );
 };
 

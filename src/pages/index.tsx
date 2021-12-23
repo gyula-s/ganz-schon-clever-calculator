@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import View from "../components/View";
 import Player from "../components/Player";
+import Layout from "../components/Layout/Layout";
 
 const emptyScore = {
     yellow: 0,
@@ -66,9 +66,7 @@ const IndexPage = () => {
 
     return (
         <>
-            <View>
-                <title>Ganz Schön Clever Calculator</title>
-
+            <Layout>
                 {players &&
                     Object.keys(players).map((key, index) => {
                         return (
@@ -98,7 +96,7 @@ const IndexPage = () => {
                 {isGameInProgress && (
                     <button onClick={() => resetGame()}>Reset Game</button>
                 )}
-            </View>
+            </Layout>
         </>
     );
 };

@@ -1,10 +1,9 @@
 import React from "react";
-import * as styles from "./view.module.scss";
+import * as styles from "./footer.module.scss";
 import cx from "classnames";
-export const View = ({ children }) => {
+export const Footer = () => {
     return (
         <>
-            <main className={cx(styles.main)}>{children}</main>
             <footer className={cx(styles.footer)}>
                 <section className={cx(styles.footerText)}>
                     <h5>
@@ -26,4 +25,4 @@ export const View = ({ children }) => {
     );
 };
 
-export default View;
+export default Footer;

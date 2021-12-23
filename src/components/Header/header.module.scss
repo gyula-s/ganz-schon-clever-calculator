@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+}
+.nav {
+    width: 100%;
+}
+
+.menuList {
+    display: flex;
+    flex: 1;
+    padding: 0;
+}
+
+.link {
+    list-style-type: none;
+    a {
+        text-decoration: none;
+        padding: 1rem;
+    }
+    :nth-child(0) {
+        a {
+            padding-left: 0;
+        }
+    }
+}

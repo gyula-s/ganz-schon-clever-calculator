@@ -1,7 +1,25 @@
 module.exports = {
     siteMetadata: {
         siteUrl: "https://gcs.soos.uk",
-        title: "gsc-calculator",
+        title: "Emergency Board Game Tools",
+        menuLinks: [
+            {
+                name: "Home",
+                link: "/",
+            },
+            {
+                name: "GSC Calculator",
+                link: "/",
+            },
+            {
+                name: "GSC Dice",
+                link: "/dice",
+            },
+        ],
     },
-    plugins: ["gatsby-plugin-sass", "gatsby-plugin-gatsby-cloud"],
+    plugins: [
+        "gatsby-plugin-sass",
+        "gatsby-plugin-gatsby-cloud",
+        `gatsby-plugin-react-helmet`,
+    ],
 };
