@@ -134,7 +134,7 @@ const getCityCard = (card: CityCard, order: number) => {
             <figure className={cx(styles.cityCard)}>
                 <p>{card.goal}</p>
                 <section className={cx(styles.cityPoints)}>
-                    <figure>{achieved ? card.first : "done"}</figure>
+                    <figure>{achieved ? "done" : card.first}</figure>
                     <figure>{card.second}</figure>
                 </section>
             </figure>
