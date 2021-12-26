@@ -88,7 +88,7 @@ const getFrontOfCard = (card: ACard) => {
             <div className={cx(styles.number)}>{card.number}</div>
             <figure className={cx(styles.ability)}>
                 <img
-                    src={`${card.ability}.png`}
+                    src={`/${card.ability}.png`}
                     alt={card.ability}
                     width="35px"
                     height="auto"
@@ -103,7 +103,7 @@ const getBackOfCard = (card: ACard) => {
         <>
             <figure className={cx(styles.backOfCard)}>
                 <img
-                    src={`${card.ability}.png`}
+                    src={`/${card.ability}.png`}
                     alt={card.ability}
                     width="100"
                     height="auto"
