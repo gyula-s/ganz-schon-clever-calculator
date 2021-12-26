@@ -23,6 +23,15 @@ const cityPlans: { [key: number]: CityCard[] } = {
         { first: 8, second: 4, goal: ["3 3 3"] },
         { first: 8, second: 4, goal: ["5 5"] },
         { first: 6, second: 3, goal: ["4 4"] },
+        { first: 8, second: 4, goal: ["build all houses in the 3rd row"] },
+        { first: 6, second: 3, goal: ["use 7 construction cards"] },
+        { first: 6, second: 3, goal: ["build all houses in the 1st row"] },
+        { first: 8, second: 3, goal: ["use 5 'BIS' cards on the same street"] },
+        {
+            first: 7,
+            second: 4,
+            goal: ["build the first and last house in each street"],
+        },
     ],
     2: [
         { first: 9, second: 5, goal: ["4 1 1"] },
@@ -31,6 +40,37 @@ const cityPlans: { [key: number]: CityCard[] } = {
         { first: 11, second: 6, goal: ["1 1 1 6"] },
         { first: 9, second: 5, goal: ["4 5"] },
         { first: 8, second: 4, goal: ["3 5"] },
+        {
+            first: 7,
+            second: 4,
+            goal: ["two streets must have all of the pools built"],
+        },
+        {
+            first: 10,
+            second: 5,
+            goal: [
+                "all of the parks AND all of the pools on the 3rd street must be built",
+            ],
+        },
+        {
+            first: 8,
+            second: 3,
+            goal: [
+                "all of the parks AND all of the pools on the 2nd street must be built",
+            ],
+        },
+        {
+            first: 10,
+            second: 5,
+            goal: [
+                "build all of the parks, all of the pools, and one roundabout in the same street",
+            ],
+        },
+        {
+            first: 7,
+            second: 4,
+            goal: ["two streets must have all of the parks built"],
+        },
     ],
     3: [
         { first: 7, second: 3, goal: ["3 4"] },
