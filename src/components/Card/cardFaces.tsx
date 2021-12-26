@@ -18,15 +18,15 @@ export interface CityCard {
 const cityPlans: { [key: number]: CityCard[] } = {
     1: [
         { first: 10, second: 6, goal: ["6 6"] },
-        { first: 8, second: 4, goal: ["1 1 1 1 1 1"] },
-        { first: 8, second: 4, goal: ["2 2 2 2"] },
+        { first: 8, second: 4, goal: ["1 1 1 1 1 1 (6x1)"] },
+        { first: 8, second: 4, goal: ["2 2 2 2 (4x2)"] },
         { first: 8, second: 4, goal: ["3 3 3"] },
         { first: 8, second: 4, goal: ["5 5"] },
         { first: 6, second: 3, goal: ["4 4"] },
         { first: 8, second: 4, goal: ["build all houses in the 3rd row"] },
         { first: 6, second: 3, goal: ["use 7 construction cards"] },
         { first: 6, second: 3, goal: ["build all houses in the 1st row"] },
-        { first: 8, second: 3, goal: ["use 5 'BIS' cards on the same street"] },
+        // { first: 8, second: 3, goal: ["use 5 'BIS' cards on the same street"] },
         {
             first: 7,
             second: 4,
