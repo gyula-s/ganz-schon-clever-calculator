@@ -46,7 +46,7 @@ const Welcome = () => {
     return (
         <Layout>
             <div className={cx(styles.welcome)}>
-                <div>
+                <div className={styles.piledCards}>
                     <p>cards left in each stack: {numberPile[1].length}</p>
                     <div className={cx(styles.drawPile)}>
                         {getPiledCards(numberPile, "front", drawNextRound)}
