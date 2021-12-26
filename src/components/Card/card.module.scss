@@ -1,0 +1,77 @@
+.card {
+    border: 1px solid coral;
+    border-radius: 4%;
+    width: 150px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+    background-color: cornsilk;
+    margin: 15px;
+    box-shadow: 0 0 0 10px white, 0 0 0 11px black;
+    position: relative;
+}
+
+.number {
+    flex: 0 1 85%;
+    font-size: 75px;
+    line-height: 180px;
+}
+
+.ability {
+    flex: 0 1 15%;
+}
+
+.backOfCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 100%;
+}
+.construction {
+    color: orange;
+}
+.pool {
+    color: blue;
+}
+.park {
+    color: green;
+}
+.agent {
+    color: purple;
+}
+.fence {
+    color: grey;
+}
+.bis {
+    color: red;
+}
+
+.cityCard {
+    width: 120px;
+    height: 100%;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+}
+
+.cityPoints {
+    display: flex;
+}
+
+.cityOrder {
+    position: absolute;
+    display: block;
+    font-size: 80px;
+    overflow: hidden;
+    opacity: 20%;
+    // transform: translate(-50%, -50%);
+}

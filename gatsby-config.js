@@ -15,6 +15,10 @@ module.exports = {
                 name: "GSC Dice",
                 link: "/dice",
             },
+            {
+                name: "Welcome To cards",
+                link: "/welcome",
+            },
         ],
     },
     plugins: [

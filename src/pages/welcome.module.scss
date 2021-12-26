@@ -1,0 +1,14 @@
+.drawPile,
+.cityCards,
+.featurePile {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.welcome {
+    display: flex;
+}
+
+.cityCards {
+    flex-direction: row;
+}
