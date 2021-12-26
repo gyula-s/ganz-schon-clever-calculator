@@ -22,6 +22,9 @@ const Welcome = () => {
         setNumberPile(getShuffledDeck());
         setEffectPile(blankEffectPile);
     };
+    const resetCityCards = () => {
+        setCityCards(getCityPlans());
+    };
 
     const undo = () => {
         if (effectPile[1].length) {
@@ -82,6 +85,13 @@ const Welcome = () => {
 
                 {/* this is where we have the three stacks of cards (the number and the upcoming face)*/}
             </div>
+            <button
+                onClick={() => {
+                    resetCityCards();
+                }}
+            >
+                Change city plans
+            </button>
             <button
                 onClick={() => {
                     resetPiles();
