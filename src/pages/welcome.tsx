@@ -23,6 +23,21 @@ const Welcome = () => {
         setEffectPile(blankEffectPile);
     };
 
+    const undo = () => {
+        if (effectPile[1].length) {
+            const topCard1 = effectPile[1].pop();
+            const topCard2 = effectPile[2].pop();
+            const topCard3 = effectPile[3].pop();
+
+            setEffectPile({ ...effectPile });
+            setNumberPile({
+                1: [...numberPile[1], topCard1],
+                2: [...numberPile[2], topCard2],
+                3: [...numberPile[3], topCard3],
+            });
+        }
+    };
+
     const drawNextRound = () => {
         if (numberPile[1].length) {
             const topCard1 = numberPile[1].pop();
@@ -30,7 +45,11 @@ const Welcome = () => {
             const topCard3 = numberPile[3].pop();
 
             setNumberPile({ ...numberPile });
-            setEffectPile({ 1: [topCard1], 2: [topCard2], 3: [topCard3] });
+            setEffectPile({
+                1: [...effectPile[1], topCard1],
+                2: [...effectPile[2], topCard2],
+                3: [...effectPile[3], topCard3],
+            });
         }
     };
 
@@ -69,6 +88,15 @@ const Welcome = () => {
                 }}
             >
                 Reset cards
+            </button>
+
+            <button
+                disabled={!effectPile[1].length}
+                onClick={() => {
+                    undo();
+                }}
+            >
+                Undo
             </button>
         </Layout>
     );
