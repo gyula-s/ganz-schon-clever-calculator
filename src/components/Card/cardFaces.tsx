@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import cx from "classnames";
 import * as styles from "./card.module.scss";
 import Card from "./Card";
@@ -18,11 +18,20 @@ export interface CityCard {
 const cityPlans: { [key: number]: CityCard[] } = {
     1: [
         { first: 10, second: 6, goal: ["6 6"] },
-        { first: 8, second: 4, goal: ["1 1 1 1 1 1"] },
-        { first: 8, second: 4, goal: ["2 2 2 2"] },
+        { first: 8, second: 4, goal: ["1 1 1 1 1 1 (6x1)"] },
+        { first: 8, second: 4, goal: ["2 2 2 2 (4x2)"] },
         { first: 8, second: 4, goal: ["3 3 3"] },
         { first: 8, second: 4, goal: ["5 5"] },
         { first: 6, second: 3, goal: ["4 4"] },
+        { first: 8, second: 4, goal: ["build all houses in the 3rd row"] },
+        { first: 6, second: 3, goal: ["use 7 construction cards"] },
+        { first: 6, second: 3, goal: ["build all houses in the 1st row"] },
+        // { first: 8, second: 3, goal: ["use 5 'BIS' cards on the same street"] },
+        {
+            first: 7,
+            second: 4,
+            goal: ["build the first and last house in each street"],
+        },
     ],
     2: [
         { first: 9, second: 5, goal: ["4 1 1"] },
@@ -31,6 +40,37 @@ const cityPlans: { [key: number]: CityCard[] } = {
         { first: 11, second: 6, goal: ["1 1 1 6"] },
         { first: 9, second: 5, goal: ["4 5"] },
         { first: 8, second: 4, goal: ["3 5"] },
+        {
+            first: 7,
+            second: 4,
+            goal: ["two streets must have all of the pools built"],
+        },
+        {
+            first: 10,
+            second: 5,
+            goal: [
+                "all of the parks AND all of the pools on the 3rd street must be built",
+            ],
+        },
+        {
+            first: 8,
+            second: 3,
+            goal: [
+                "all of the parks AND all of the pools on the 2nd street must be built",
+            ],
+        },
+        {
+            first: 10,
+            second: 5,
+            goal: [
+                "build all of the parks, all of the pools, and one roundabout in the same street",
+            ],
+        },
+        {
+            first: 7,
+            second: 4,
+            goal: ["two streets must have all of the parks built"],
+        },
     ],
     3: [
         { first: 7, second: 3, goal: ["3 4"] },
@@ -88,7 +128,7 @@ const getFrontOfCard = (card: ACard) => {
             <div className={cx(styles.number)}>{card.number}</div>
             <figure className={cx(styles.ability)}>
                 <img
-                    src={`${card.ability}.png`}
+                    src={`/${card.ability}.png`}
                     alt={card.ability}
                     width="35px"
                     height="auto"
@@ -103,7 +143,7 @@ const getBackOfCard = (card: ACard) => {
         <>
             <figure className={cx(styles.backOfCard)}>
                 <img
-                    src={`${card.ability}.png`}
+                    src={`/${card.ability}.png`}
                     alt={card.ability}
                     width="100"
                     height="auto"

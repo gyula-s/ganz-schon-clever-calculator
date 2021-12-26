@@ -54,7 +54,7 @@
 .cityCard {
     width: 120px;
     height: 100%;
-    font-size: 25px;
+    font-size: 19px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -69,9 +69,9 @@
 
 .cityOrder {
     position: absolute;
+    left: 10%;
     display: block;
     font-size: 80px;
     overflow: hidden;
     opacity: 20%;
-    // transform: translate(-50%, -50%);
 }
