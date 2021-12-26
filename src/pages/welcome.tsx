@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Layout from "../components/Layout";
 import {
     ACard,
@@ -18,15 +18,16 @@ const Welcome = () => {
     }>(blankEffectPile);
     const [cityCards, setCityCards] = useState(getCityPlans());
 
-    const resetPiles = () => {
+    const resetPiles = useCallback(() => {
         setNumberPile(getShuffledDeck());
         setEffectPile(blankEffectPile);
-    };
-    const resetCityCards = () => {
-        setCityCards(getCityPlans());
-    };
+    }, []);
 
-    const undo = () => {
+    const resetCityCards = useCallback(() => {
+        setCityCards(getCityPlans());
+    }, []);
+
+    const undo = useCallback(() => {
         if (effectPile[1].length) {
             const topCard1 = effectPile[1].pop();
             const topCard2 = effectPile[2].pop();
@@ -39,9 +40,9 @@ const Welcome = () => {
                 3: [...numberPile[3], topCard3],
             });
         }
-    };
+    }, [effectPile, numberPile]);
 
-    const drawNextRound = () => {
+    const drawNextRound = useCallback(() => {
         if (numberPile[1].length) {
             const topCard1 = numberPile[1].pop();
             const topCard2 = numberPile[2].pop();
@@ -54,16 +55,19 @@ const Welcome = () => {
                 3: [...effectPile[3], topCard3],
             });
         }
-    };
+    }, [effectPile, numberPile]);
 
-    const setAchieved = (number: string) => {
-        const changed = cityCards[number];
-        const changedAchieved = !!cityCards[number].achieved;
-        setCityCards({
-            ...cityCards,
-            [number]: { ...changed, achieved: !changedAchieved },
-        });
-    };
+    const setAchieved = useCallback(
+        (number: string) => {
+            const changed = cityCards[number];
+            const changedAchieved = !!cityCards[number].achieved;
+            setCityCards({
+                ...cityCards,
+                [number]: { ...changed, achieved: !changedAchieved },
+            });
+        },
+        [cityCards]
+    );
 
     return (
         <Layout>
@@ -71,6 +75,7 @@ const Welcome = () => {
                 <div>
                     <p>cards left in each stack: {numberPile[1].length}</p>
                     <div className={cx(styles.drawPile)}>
+                        {console.log("drawing")}
                         {getPiledCards(numberPile, "front", drawNextRound)}
                     </div>
 
