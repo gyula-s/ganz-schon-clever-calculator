@@ -75,7 +75,6 @@ const Welcome = () => {
                 <div>
                     <p>cards left in each stack: {numberPile[1].length}</p>
                     <div className={cx(styles.drawPile)}>
-                        {console.log("drawing")}
                         {getPiledCards(numberPile, "front", drawNextRound)}
                     </div>
 
