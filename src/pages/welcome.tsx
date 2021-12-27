@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import {
     ACard,
@@ -65,8 +65,10 @@ const Welcome = () => {
     return (
         <Layout>
             <div className={cx(styles.welcome)}>
+                <div className={cx(styles.cityCards)}>
+                    {getCityCardPile(cityCards, setAchieved)}
+                </div>
                 <div className={styles.piledCards}>
-                    <p>cards left in each stack: {numberPile[1].length}</p>
                     <div className={cx(styles.drawPile)}>
                         {getPiledCards(numberPile, "front", drawNextRound)}
                     </div>
@@ -75,29 +77,29 @@ const Welcome = () => {
                     <div className={cx(styles.featurePile)}>
                         {getPiledCards(effectPile, "back", drawNextRound)}
                     </div>
-                </div>
-                <div className={cx(styles.cityCards)}>
-                    {getCityCardPile(cityCards, setAchieved)}
+                    <div className={cx(styles.controls)}>
+                        <button
+                            onClick={() => {
+                                resetPiles();
+                            }}
+                        >
+                            Reset cards
+                        </button>
+
+                        <button
+                            disabled={!effectPile[1].length}
+                            onClick={() => {
+                                undo();
+                            }}
+                        >
+                            Undo
+                        </button>
+                        <p>cards left in each stack: {numberPile[1].length}</p>
+                    </div>
                 </div>
 
                 {/* this is where we have the three stacks of cards (the number and the upcoming face)*/}
             </div>
-            <button
-                onClick={() => {
-                    resetPiles();
-                }}
-            >
-                Reset cards
-            </button>
-
-            <button
-                disabled={!effectPile[1].length}
-                onClick={() => {
-                    undo();
-                }}
-            >
-                Undo
-            </button>
         </Layout>
     );
 };

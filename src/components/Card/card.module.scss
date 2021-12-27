@@ -1,36 +1,60 @@
-.card {
+@mixin aCard {
     border: 1px solid coral;
     border-radius: 4%;
-    width: 150px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: center;
+    aspect-ratio: 3/5;
     background-color: cornsilk;
     margin: 15px;
     box-shadow: 0 0 0 10px white, 0 0 0 11px black;
-    position: relative;
+    font-size: 2vw;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.cityCard {
+    @include aCard;
+    min-width: 5vw;
+    flex-grow: 1;
+    padding: 5px;
+}
+// @media screen and (orientation: landscape) {
+//     .cityCard {
+//         @include aCard;
+//         aspect-ratio: 5/3;
+//         flex-flow: row nowrap;
+//     }
+// }
+.gameCard {
+    @include aCard;
+    min-width: 5vw;
+    flex-grow: 0.3;
 }
 
 .number {
-    flex: 0 1 85%;
-    font-size: 75px;
-    line-height: 180px;
+    display: flex;
+    flex: 3 1 85%;
+    font-size: 5em;
+    color: black;
+    text-shadow: 0px 0px 5px coral;
+    align-items: center;
+    justify-content: center;
 }
 
 .ability {
-    flex: 0 1 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 10%;
 }
 
 .backOfCard {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    height: 100%;
+    font-size: 4em;
+    width: 100%;
 }
 .construction {
     color: orange;
@@ -51,27 +75,80 @@
     color: red;
 }
 
-.cityCard {
-    width: 120px;
-    height: 100%;
-    font-size: 19px;
+.cityOrder {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: space-between;
+    height: 30%;
+    justify-content: center;
     align-items: center;
+    font-size: 3em;
+    opacity: 20%;
+}
+
+.cityInfo {
+    font-size: 1em;
+    display: flex;
+    height: 70%;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+// @media screen and (orientation: landscape) {
+//     .cityInfo {
+//         flex-flow: row nowrap;
+//         height: 100%;
+//     }
+// }
+
+.cityGoal {
+    display: flex;
+    flex-grow: 3;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1em;
 }
 
 .cityPoints {
     display: flex;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2em;
+}
+@media screen and (orientation: landscape) {
+    .cityCard {
+        @include aCard;
+        aspect-ratio: 5/3;
+        flex-flow: row nowrap;
+    }
+    .cityInfo {
+        flex-flow: row nowrap;
+        height: 100%;
+    }
+    // .cityGoal {
+    // }
+    .cityPoints {
+        width: 10%;
+        height: 100%;
+        flex-flow: column nowrap;
+    }
 }
 
-.cityOrder {
-    position: absolute;
-    left: 10%;
-    display: block;
-    font-size: 80px;
-    overflow: hidden;
-    opacity: 20%;
+.firstPoint {
+    color: chocolate;
+    font-weight: bold;
+}
+
+.imgThisRound {
+    width: 80%;
+    height: auto;
+}
+.imgNextRound {
+    width: 50%;
+    height: auto;
 }

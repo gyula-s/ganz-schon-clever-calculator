@@ -128,10 +128,9 @@ const getFrontOfCard = (card: ACard) => {
             <div className={cx(styles.number)}>{card.number}</div>
             <figure className={cx(styles.ability)}>
                 <img
+                    className={cx(styles.imgNextRound)}
                     src={`/${card.ability}.png`}
                     alt={card.ability}
-                    width="35px"
-                    height="auto"
                 ></img>
             </figure>
         </>
@@ -143,10 +142,9 @@ const getBackOfCard = (card: ACard) => {
         <>
             <figure className={cx(styles.backOfCard)}>
                 <img
+                    className={cx(styles.imgThisRound)}
                     src={`/${card.ability}.png`}
                     alt={card.ability}
-                    width="100"
-                    height="auto"
                 ></img>
             </figure>
         </>
@@ -158,7 +156,11 @@ export const getCityCardPile = (cards: { [key: string]: CityCard }, cb) => {
     const c = [];
     for (let i = 1; i <= 3; i++) {
         c.push(
-            <Card cb={reportCardNumber(i)} key={i}>
+            <Card
+                className={cx(styles.cityCard)}
+                cb={reportCardNumber(i)}
+                key={i}
+            >
                 {getCityCard(cards[i], i)}
             </Card>
         );
@@ -169,15 +171,19 @@ const getCityCard = (card: CityCard, order: number) => {
     const achieved = card.achieved;
     return (
         <>
-            <figure className={cx(styles.cityOrder)}>{order}</figure>
+            <div className={cx(styles.cityOrder)}>{order}</div>
 
-            <figure className={cx(styles.cityCard)}>
-                <p>{card.goal}</p>
-                <section className={cx(styles.cityPoints)}>
-                    <figure>{achieved ? "done" : card.first}</figure>
-                    <figure>{card.second}</figure>
+            <div className={cx(styles.cityInfo)}>
+                <section className={cx(styles.cityGoal)}>
+                    <span>{card.goal}</span>
                 </section>
-            </figure>
+                <section className={cx(styles.cityPoints)}>
+                    <span className={cx(styles.firstPoint)}>
+                        {achieved ? "done" : card.first}
+                    </span>
+                    <span>{card.second}</span>
+                </section>
+            </div>
         </>
     );
 };
@@ -202,13 +208,13 @@ export const getPiledCards = (
 
     return (
         <>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](firstPile[firstPile.length - 1])}
             </Card>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](secondPile[secondPile.length - 1])}
             </Card>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](thirdPile[thirdPile.length - 1])}
             </Card>
         </>
