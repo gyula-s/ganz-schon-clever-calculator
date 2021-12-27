@@ -9,7 +9,6 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    align-content: center;
     align-items: center;
 }
 
@@ -17,15 +16,11 @@
     @include aCard;
     min-width: 5vw;
     flex-grow: 1;
+    justify-content: flex-start;
     padding: 5px;
+    gap: 5px;
 }
-// @media screen and (orientation: landscape) {
-//     .cityCard {
-//         @include aCard;
-//         aspect-ratio: 5/3;
-//         flex-flow: row nowrap;
-//     }
-// }
+
 .gameCard {
     @include aCard;
     min-width: 5vw;
@@ -77,7 +72,7 @@
 
 .cityOrder {
     display: flex;
-    height: 30%;
+    height: 15%;
     justify-content: center;
     align-items: center;
     font-size: 3em;
@@ -87,56 +82,32 @@
 .cityInfo {
     font-size: 1em;
     display: flex;
-    height: 70%;
+    height: 85%;
     flex-flow: column nowrap;
-    justify-content: space-around;
-    align-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0;
     padding: 0;
 }
-// @media screen and (orientation: landscape) {
-//     .cityInfo {
-//         flex-flow: row nowrap;
-//         height: 100%;
-//     }
-// }
 
-.cityGoal {
+.goalBlock {
     display: flex;
-    flex-grow: 3;
-    flex-flow: column wrap;
-    justify-content: flex-start;
+    width: 100%;
+    flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
-    font-size: 1em;
+    gap: 5px;
+    height: 85%;
 }
 
 .cityPoints {
     display: flex;
     width: 100%;
-    flex-grow: 1;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     font-size: 2em;
-}
-@media screen and (orientation: landscape) {
-    .cityCard {
-        @include aCard;
-        aspect-ratio: 5/3;
-        flex-flow: row nowrap;
-    }
-    .cityInfo {
-        flex-flow: row nowrap;
-        height: 100%;
-    }
-    // .cityGoal {
-    // }
-    .cityPoints {
-        width: 10%;
-        height: 100%;
-        flex-flow: column nowrap;
-    }
+    height: 15%;
 }
 
 .firstPoint {
@@ -151,4 +122,38 @@
 .imgNextRound {
     width: 50%;
     height: auto;
+}
+
+.plotImage {
+    width: 9%;
+}
+
+.street {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.goalText {
+    font-size: 1em;
+}
+
+@media screen and (orientation: landscape) {
+    .cityCard {
+        @include aCard;
+        aspect-ratio: 5/3;
+        flex-flow: row nowrap;
+    }
+    .cityInfo {
+        flex-flow: row nowrap;
+        height: 100%;
+    }
+    .cityPoints {
+        width: 20%;
+        height: 100%;
+        flex-flow: column nowrap;
+        text-align: right;
+    }
 }
