@@ -1,12 +1,11 @@
 p {
     font: italic small-caps bold 16px Georgia;
     text-align: center;
+    margin: 0px;
 }
 
 .welcome {
     display: grid;
-    // justify-content: center;
-    // align-items: flex-start;
     grid-gap: 10px;
     padding: 10px;
     width: 95vw;
@@ -23,7 +22,6 @@ p {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
-    // flex-flow: column nowrap;
 }
 
 .controls {
@@ -36,18 +34,14 @@ p {
 
 @media screen and (orientation: portrait) {
     .welcome {
-        height: 80vh;
-        grid-template-rows: 1fr 2fr;
+        height: 90vh;
+        grid-template-rows: 35% 1fr;
         grid-template-columns: 1fr;
-        // flex-flow: column nowrap;
     }
     .cityCards {
         display: grid;
-        grid-template-rows: 1fr 10%;
+        grid-template-rows: 1fr 15%;
         grid-template-columns: 1fr 1fr 1fr;
-        // width: 100%;
-        // flex-flow: row nowrap;
-        // height: 50vw;
     }
     .piledCards {
         width: 100%;
@@ -59,21 +53,18 @@ p {
 }
 @media screen and (orientation: landscape) {
     .welcome {
-        // flex-flow: row nowrap;
         height: 70vw;
         grid-template-rows: 1fr;
-        grid-template-columns: 0.8fr 2.2fr;
+        grid-template-columns: 30% 1fr;
     }
     .cityCards {
         display: grid;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr;
-        // width: 1fr;
-        // height: 1fr;
-        // flex-flow: column nowrap;
+        height: 75%;
     }
     .piledCards {
         width: 100%;
-        height: 100%;
+        height: 75%;
     }
 }

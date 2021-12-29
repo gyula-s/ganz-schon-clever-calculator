@@ -178,13 +178,13 @@ const getFrontOfCard = (card: ACard) => {
 const getBackOfCard = (card: ACard) => {
     return (
         <>
-            <figure className={cx(styles.backOfCard)}>
+            <div className={cx(styles.backOfCard)}>
                 <img
                     className={cx(styles.imgThisRound)}
                     src={`/${card.ability}.png`}
                     alt={card.ability}
                 ></img>
-            </figure>
+            </div>
         </>
     );
 };
