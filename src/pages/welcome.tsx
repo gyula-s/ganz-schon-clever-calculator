@@ -74,16 +74,6 @@ const Welcome = () => {
             <div className={cx(styles.welcome)}>
                 <div className={cx(styles.cityCards)}>
                     {getCityCardPile(cityCards, setAchieved)}
-                </div>
-                <div className={styles.piledCards}>
-                    <div className={cx(styles.drawPile)}>
-                        {getPiledCards(numberPile, "front", drawNextRound)}
-                    </div>
-
-                    {/* this is where we have the effects (fence, park, pool, etc.) */}
-                    <div className={cx(styles.featurePile)}>
-                        {getPiledCards(effectPile, "back", drawNextRound)}
-                    </div>
                     <div className={cx(styles.controls)}>
                         <button
                             onClick={() => {
@@ -109,6 +99,16 @@ const Welcome = () => {
                             Undo
                         </button>
                         <p>cards left in each stack: {numberPile[1].length}</p>
+                    </div>
+                </div>
+                <div className={styles.piledCards}>
+                    <div className={cx(styles.drawPile)}>
+                        {getPiledCards(numberPile, "front", drawNextRound)}
+                    </div>
+
+                    {/* this is where we have the effects (fence, park, pool, etc.) */}
+                    <div className={cx(styles.featurePile)}>
+                        {getPiledCards(effectPile, "back", drawNextRound)}
                     </div>
                 </div>
 
