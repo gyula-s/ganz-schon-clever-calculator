@@ -1,14 +1,40 @@
-.drawPile,
-.cityCards,
-.featurePile {
-    display: flex;
-    margin-bottom: 10px;
+$br-small: 500px;
+p {
+    font: italic small-caps bold 16px Georgia;
+    text-align: center;
+    margin: 0px;
 }
 
 .welcome {
     display: flex;
+    @media (max-width: $br-small) {
+        display: block;
+    }
 }
 
 .cityCards {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $br-small) {
+        flex-direction: row;
+    }
+}
+
+.drawPile,
+.featurePile {
+    display: flex;
+}
+
+.piledCards {
+    display: flex;
+    flex-direction: column;
+}
+
+.controls {
+    margin: 10px;
+}
+
+.button {
+    width: 200px;
+    margin: 0 5%;
 }

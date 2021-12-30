@@ -1,78 +1,160 @@
+$cardLong: 270px;
+$cardShort: 170px;
+$smallCarlLong: 75px;
+$smallCardShort: 150px;
+$br-small: 500px;
+
 .card {
     border: 1px solid coral;
     border-radius: 4%;
-    width: 150px;
-    height: 250px;
+    background-color: cornsilk;
+    box-shadow: 0 0 0 10px white, 0 0 0 11px black;
+    align-items: center;
+    cursor: pointer;
+    margin: 5px 15px 25px;
+    flex: 1 1 auto;
+    align-self: auto;
+    height: $cardShort;
+    width: $cardLong;
+    @media (max-width: $br-small) {
+        height: $smallCardShort;
+        width: $smallCarlLong;
+    }
+}
+.gameCard {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: center;
-    background-color: cornsilk;
-    margin: 15px;
-    box-shadow: 0 0 0 10px white, 0 0 0 11px black;
-    position: relative;
-    cursor: pointer;
+    margin: 5px 15px 25px;
+    height: $cardLong;
+    width: $cardShort;
+    justify-content: center;
+
+    @media (max-width: $br-small) {
+        height: $smallCardShort;
+        width: $smallCarlLong;
+    }
+}
+.cityCard {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 15px 25px;
+    @media (max-width: $br-small) {
+        flex-direction: column;
+    }
 }
 
 .number {
-    flex: 0 1 85%;
-    font-size: 75px;
-    line-height: 180px;
+    display: flex;
+    flex: 3 1 85%;
+    font-size: 5em;
+    text-shadow: 0px 0px 5px coral;
+    color: black;
+    place-self: center;
+    place-items: center;
+    @media (max-width: $br-small) {
+        font-size: 4em;
+    }
 }
 
 .ability {
-    flex: 0 1 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 10%;
 }
 
 .backOfCard {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 20px;
-    height: 100%;
-}
-.construction {
-    color: orange;
-}
-.pool {
-    color: blue;
-}
-.park {
-    color: green;
-}
-.agent {
-    color: purple;
-}
-.fence {
-    color: grey;
-}
-.bis {
-    color: red;
+    justify-content: center;
+    align-content: center;
 }
 
-.cityCard {
-    width: 120px;
-    height: 100%;
-    font-size: 19px;
+.cityOrder {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: space-between;
+    opacity: 20%;
+    font-size: 3em;
+    @media (max-width: $br-small) {
+        font-size: 2em;
+    }
+}
+
+.cityInfo {
+    display: flex;
+    flex-direction: row;
+    font-size: 1em;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    @media (max-width: $br-small) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.goalBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    place-self: center;
+    place-items: center;
+    @media (max-width: $br-small) {
+        height: 80px;
+    }
 }
 
 .cityPoints {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 2em;
+    padding: 2px;
+    width: 15px;
+    @media (max-width: $br-small) {
+        font-size: 1.5em;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
 
-.cityOrder {
-    position: absolute;
-    left: 10%;
-    display: block;
-    font-size: 80px;
-    overflow: hidden;
-    opacity: 20%;
+.firstPoint {
+    color: chocolate;
+    font-weight: bold;
+}
+
+.imgThisRound {
+    width: 80%;
+    height: auto;
+}
+.imgNextRound {
+    width: 50%;
+    height: auto;
+}
+
+.plotImage {
+    width: 9%;
+    @media (max-width: $br-small) {
+        width: 11%;
+    }
+}
+
+.street {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.goalText {
+    font-size: 1em;
+    width: 85%;
+    @media (max-width: $br-small) {
+        font-size: 0.9em;
+    }
 }
