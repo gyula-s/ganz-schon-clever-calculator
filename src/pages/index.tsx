@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Player from "../components/Player";
 import Layout from "../components/Layout/Layout";
 
@@ -16,7 +16,27 @@ const emptyScore = {
 const IndexPage = () => {
     const [players, setPlayers] = useState({});
     const [name, setName] = useState("");
+    //function to get data stored in localstorage
+    const getData = () => {
+        const localData: string = localStorage.getItem("playerNames");
+        //check if there is data in local storage if not return empty object
+        return localData ? JSON.parse(localData) : {};
+    };
 
+    //updete players state on the first render
+    useEffect(() => {
+        setPlayers(getData());
+    }, []);
+
+    //update the localstorage when the players state change
+    useEffect(() => {
+        const names: Array<string> = Object.keys(players);
+        let playerNames = {};
+        names.map((name) => {
+            playerNames = { ...playerNames, [name]: { score: emptyScore } };
+        });
+        localStorage.setItem("playerNames", JSON.stringify(playerNames));
+    }, [players]);
     const onChangeHandler = ({
         target,
     }: React.ChangeEvent<HTMLInputElement>) => {
