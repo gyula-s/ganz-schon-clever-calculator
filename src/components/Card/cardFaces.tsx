@@ -19,7 +19,7 @@ const cityPlans: { [key: number]: CityCard[] } = {
     1: [
         { first: 10, second: 6, goal: [6, 6] },
         { first: 8, second: 4, goal: ["6x", 1] },
-        { first: 8, second: 4, goal: [2, 2, 2, 2] },
+        { first: 8, second: 4, goal: ["4x", 2] },
         { first: 8, second: 4, goal: [3, 3, 3] },
         { first: 8, second: 4, goal: [5, 5] },
         { first: 6, second: 3, goal: [4, 4] },
