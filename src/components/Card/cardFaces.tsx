@@ -11,18 +11,18 @@ export interface ACard {
 export interface CityCard {
     first: number;
     second: number;
-    goal: string[];
+    goal: (string | number)[];
     achieved?: boolean;
 }
 
 const cityPlans: { [key: number]: CityCard[] } = {
     1: [
-        { first: 10, second: 6, goal: ["6 6"] },
-        { first: 8, second: 4, goal: ["1 1 1 1 1 1 (6x1)"] },
-        { first: 8, second: 4, goal: ["2 2 2 2 (4x2)"] },
-        { first: 8, second: 4, goal: ["3 3 3"] },
-        { first: 8, second: 4, goal: ["5 5"] },
-        { first: 6, second: 3, goal: ["4 4"] },
+        { first: 10, second: 6, goal: [6, 6] },
+        { first: 8, second: 4, goal: ["6x", 1] },
+        { first: 8, second: 4, goal: [2, 2, 2, 2] },
+        { first: 8, second: 4, goal: [3, 3, 3] },
+        { first: 8, second: 4, goal: [5, 5] },
+        { first: 6, second: 3, goal: [4, 4] },
         { first: 8, second: 4, goal: ["build all houses in the 3rd row"] },
         { first: 6, second: 3, goal: ["use 7 construction cards"] },
         { first: 6, second: 3, goal: ["build all houses in the 1st row"] },
@@ -34,12 +34,12 @@ const cityPlans: { [key: number]: CityCard[] } = {
         },
     ],
     2: [
-        { first: 9, second: 5, goal: ["4 1 1"] },
-        { first: 12, second: 7, goal: ["3 3 4"] },
-        { first: 10, second: 6, goal: ["5 2 2"] },
-        { first: 11, second: 6, goal: ["1 1 1 6"] },
-        { first: 9, second: 5, goal: ["4 5"] },
-        { first: 8, second: 4, goal: ["3 5"] },
+        { first: 9, second: 5, goal: [4, 1, 1] },
+        { first: 12, second: 7, goal: [3, 3, 4] },
+        { first: 10, second: 6, goal: [5, 2, 2] },
+        { first: 11, second: 6, goal: [1, 1, 1, 6] },
+        { first: 9, second: 5, goal: [4, 5] },
+        { first: 8, second: 4, goal: [3, 5] },
         {
             first: 7,
             second: 4,
@@ -73,15 +73,53 @@ const cityPlans: { [key: number]: CityCard[] } = {
         },
     ],
     3: [
-        { first: 7, second: 3, goal: ["3 4"] },
-        { first: 7, second: 3, goal: ["2 5"] },
-        { first: 13, second: 7, goal: ["1 4 5"] },
-        { first: 13, second: 7, goal: ["2 3 5"] },
-        { first: 12, second: 7, goal: ["1 2 6"] },
-        { first: 11, second: 6, goal: ["1 2 2 3"] },
+        { first: 7, second: 3, goal: [3, 4] },
+        { first: 7, second: 3, goal: [2, 5] },
+        { first: 13, second: 7, goal: [1, 4, 5] },
+        { first: 13, second: 7, goal: [2, 3, 5] },
+        { first: 12, second: 7, goal: [1, 2, 6] },
+        { first: 11, second: 6, goal: [1, 2, 2, 3] },
     ],
 };
 
+const getGoalImages = (card: CityCard) => {
+    const elements = card.goal.map((g, i) => {
+        if (typeof g === "number") {
+            const getBlock = (g: number) => {
+                const street = [];
+                for (let j = 0; j < g; j++) {
+                    street.push(
+                        <img
+                            className={styles.plotImage}
+                            src={`/plot.png`}
+                            alt={g.toString()}
+                            key={`${g}-${i}-${j}`}
+                        />
+                    );
+                }
+                return street;
+            };
+            return (
+                <div
+                    className={styles.street}
+                    style={{
+                        height: `${Math.floor(100 / (card.goal.length + 1))}%`,
+                    }}
+                    key={`${g}-${i}`}
+                >
+                    {getBlock(g)}
+                </div>
+            );
+        } else {
+            return (
+                <p className={styles.goalText} key={`string-${i}`}>
+                    {g}
+                </p>
+            );
+        }
+    });
+    return <section className={styles.goalBlock}>{elements}</section>;
+};
 const getRandomItem = function <T>(arr: T[]): T {
     return arr[Math.floor(Math.random() * arr.length)];
 };
@@ -128,10 +166,9 @@ const getFrontOfCard = (card: ACard) => {
             <div className={cx(styles.number)}>{card.number}</div>
             <figure className={cx(styles.ability)}>
                 <img
+                    className={cx(styles.imgNextRound)}
                     src={`/${card.ability}.png`}
                     alt={card.ability}
-                    width="35px"
-                    height="auto"
                 ></img>
             </figure>
         </>
@@ -141,14 +178,13 @@ const getFrontOfCard = (card: ACard) => {
 const getBackOfCard = (card: ACard) => {
     return (
         <>
-            <figure className={cx(styles.backOfCard)}>
+            <div className={cx(styles.backOfCard)}>
                 <img
+                    className={cx(styles.imgThisRound)}
                     src={`/${card.ability}.png`}
                     alt={card.ability}
-                    width="100"
-                    height="auto"
                 ></img>
-            </figure>
+            </div>
         </>
     );
 };
@@ -158,7 +194,11 @@ export const getCityCardPile = (cards: { [key: string]: CityCard }, cb) => {
     const c = [];
     for (let i = 1; i <= 3; i++) {
         c.push(
-            <Card cb={reportCardNumber(i)} key={i}>
+            <Card
+                className={cx(styles.cityCard)}
+                cb={reportCardNumber(i)}
+                key={i}
+            >
                 {getCityCard(cards[i], i)}
             </Card>
         );
@@ -169,15 +209,17 @@ const getCityCard = (card: CityCard, order: number) => {
     const achieved = card.achieved;
     return (
         <>
-            <figure className={cx(styles.cityOrder)}>{order}</figure>
+            <div className={cx(styles.cityOrder)}>{order}</div>
 
-            <figure className={cx(styles.cityCard)}>
-                <p>{card.goal}</p>
+            <div className={cx(styles.cityInfo)}>
+                {getGoalImages(card)}
                 <section className={cx(styles.cityPoints)}>
-                    <figure>{achieved ? "done" : card.first}</figure>
-                    <figure>{card.second}</figure>
+                    <span className={cx(styles.firstPoint)}>
+                        {achieved ? "✔" : card.first}
+                    </span>
+                    <span>{card.second}</span>
                 </section>
-            </figure>
+            </div>
         </>
     );
 };
@@ -202,13 +244,13 @@ export const getPiledCards = (
 
     return (
         <>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](firstPile[firstPile.length - 1])}
             </Card>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](secondPile[secondPile.length - 1])}
             </Card>
-            <Card cb={cb}>
+            <Card className={cx(styles.gameCard)} cb={cb}>
                 {getCardFace[type](thirdPile[thirdPile.length - 1])}
             </Card>
         </>

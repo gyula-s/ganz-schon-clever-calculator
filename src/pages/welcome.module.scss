@@ -1,14 +1,70 @@
-.drawPile,
-.cityCards,
-.featurePile {
-    display: flex;
-    margin-bottom: 10px;
+p {
+    font: italic small-caps bold 16px Georgia;
+    text-align: center;
+    margin: 0px;
 }
 
 .welcome {
-    display: flex;
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    width: 95vw;
 }
 
-.cityCards {
-    flex-direction: row;
+.drawPile,
+.featurePile {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.piledCards {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.controls {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3%;
+}
+
+@media screen and (orientation: portrait) {
+    .welcome {
+        height: 90vh;
+        grid-template-rows: 35% 1fr;
+        grid-template-columns: 1fr;
+    }
+    .cityCards {
+        display: grid;
+        grid-template-rows: 1fr 15%;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .piledCards {
+        width: 100%;
+    }
+    .controls {
+        grid-row: 2;
+        grid-column: 1/4;
+    }
+}
+@media screen and (orientation: landscape) {
+    .welcome {
+        height: 70vw;
+        grid-template-rows: 1fr;
+        grid-template-columns: 30% 1fr;
+    }
+    .cityCards {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        height: 75%;
+    }
+    .piledCards {
+        width: 100%;
+        height: 75%;
+    }
 }

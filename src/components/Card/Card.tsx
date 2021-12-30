@@ -2,9 +2,9 @@ import React from "react";
 import cx from "classnames";
 import * as styles from "./card.module.scss";
 
-export const Card = ({ cb, children }) => {
+export const Card = ({ className, cb, children }) => {
     return (
-        <div className={cx(styles.card)} onClick={cb}>
+        <div className={className} onClick={cb}>
             {children}
         </div>
     );
