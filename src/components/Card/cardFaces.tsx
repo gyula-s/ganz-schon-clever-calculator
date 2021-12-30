@@ -194,11 +194,7 @@ export const getCityCardPile = (cards: { [key: string]: CityCard }, cb) => {
     const c = [];
     for (let i = 1; i <= 3; i++) {
         c.push(
-            <Card
-                className={cx(styles.cityCard)}
-                cb={reportCardNumber(i)}
-                key={i}
-            >
+            <Card type="cityCard" cb={reportCardNumber(i)} key={i}>
                 {getCityCard(cards[i], i)}
             </Card>
         );
@@ -230,7 +226,7 @@ export const getPiledCards = (
     cb: Function
 ) => {
     if (!pile[1].length) {
-        return <p>click on the cards to start a game</p>;
+        return null;
     }
 
     const firstPile = pile[1];
@@ -244,13 +240,13 @@ export const getPiledCards = (
 
     return (
         <>
-            <Card className={cx(styles.gameCard)} cb={cb}>
+            <Card type="gameCard" cb={cb}>
                 {getCardFace[type](firstPile[firstPile.length - 1])}
             </Card>
-            <Card className={cx(styles.gameCard)} cb={cb}>
+            <Card type="gameCard" cb={cb}>
                 {getCardFace[type](secondPile[secondPile.length - 1])}
             </Card>
-            <Card className={cx(styles.gameCard)} cb={cb}>
+            <Card type="gameCard" cb={cb}>
                 {getCardFace[type](thirdPile[thirdPile.length - 1])}
             </Card>
         </>
