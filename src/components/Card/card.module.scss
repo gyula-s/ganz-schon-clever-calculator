@@ -4,7 +4,9 @@ $smallCarlLong: 75px;
 $smallCardShort: 150px;
 $br-small: 500px;
 
+@import url(https://fonts.googleapis.com/css2?family=Boogaloo&display=swap|Open+Sans:400italic,700italic,400,700);
 .card {
+    font-family: "Boogaloo", cursive;
     border: 1px solid coral;
     border-radius: 4%;
     background-color: cornsilk;

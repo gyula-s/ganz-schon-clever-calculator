@@ -71,6 +71,7 @@ const Welcome = () => {
 
     return (
         <Layout>
+            <h2>Greetings at:</h2>
             <div>
                 <div className={cx(styles.controls)}>
                     <p>cards left in each stack: {numberPile[1].length}</p>
