@@ -119,6 +119,7 @@ const Welcome = () => {
                     </button>
                 </section>
             </div>
+            <a href="./WelcomeToSheet-2up-LowInk.pdf">Download Sheet</a>
         </Layout>
     );
 };
