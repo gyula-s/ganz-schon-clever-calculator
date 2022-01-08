@@ -25,5 +25,12 @@ module.exports = {
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
         `gatsby-plugin-react-helmet`,
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [`Boogaloo`],
+                display: "swap",
+            },
+        },
     ],
 };

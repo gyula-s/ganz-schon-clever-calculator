@@ -108,6 +108,7 @@ const getGoalImages = (card: CityCard) => {
                     key={`${g}-${i}`}
                 >
                     {getBlock(g)}
+                    {g}
                 </div>
             );
         } else {

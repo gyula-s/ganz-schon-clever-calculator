@@ -1,20 +1,16 @@
-@import url(https://fonts.googleapis.com/css2?family=Boogaloo&display=swap|Open+Sans:400italic,700italic,400,700);
-
 $br-small: 500px;
-
-p {
-    font: italic small-caps bold 16px Georgia;
-    text-align: center;
-    margin: 0px;
-    font-family: "Boogaloo", cursive;
-}
-
-h2 {
-    font-family: "Boogaloo", cursive;
-}
 
 .welcome {
     display: flex;
+    h2 {
+        font-family: "Boogaloo", cursive;
+    }
+    p {
+        font: italic small-caps bold 16px Georgia;
+        text-align: center;
+        margin: 0px;
+        font-family: "Boogaloo", cursive;
+    }
     @media (max-width: $br-small) {
         display: block;
     }
